@@ -2,10 +2,117 @@ package Time::Duration::Concise;
 use 5.008005;
 use strict;
 use warnings;
+use Time::Duration qw();
+use parent qw(Exporter);
 
 our $VERSION = "0.01";
 
+our @EXPORT = qw(later later_exact earlier earlier_exact
+                 ago ago_exact from_now from_now_exact
+                 duration duration_exact concise);
+our @EXPORT_OK = ('interval', @EXPORT);
 
+sub concise {
+    Time::Duration::concise($_[0]);
+}
+
+sub later {
+    interval($_[0], $_[1], '%s ago', '%s later');
+}
+
+sub later_exact {
+    interval_exact($_[0], '%s ago', '%s later');
+}
+
+sub earlier {
+    interval($_[0], $_[1], '%s later', '%s ago');
+}
+
+sub earlier_exact {
+    interval_exact($_[0], '%s later', '%s ago');
+}
+
+sub ago {
+    &earlier
+}
+
+sub ago_exact {
+    &earlier_exact
+}
+
+sub from_now {
+    &later
+}
+
+sub from_now_exact {
+    &later_exact
+}
+
+sub duration_exact {
+    (my $span = shift) || return '0 sec';
+    _render('%s', Time::Duration::_separate(abs $span));
+}
+
+sub duration {
+    (my $span = shift) || return '0 sec';
+    my $precision = int($_[1] || 0) || 2;  # precision (default: 2)
+    _render(
+        '%s',
+        Time::Duration::_approximate($precision, Time::Duration::_separate(abs $span))
+    );
+}
+
+sub interval_exact {
+    my ($span, $neg_direction, $pos_direction) = @_;
+
+    _render(
+        _determine_direction($span, $neg_direction, $pos_direction),
+        Time::Duration::_separate($span)
+    );
+}
+
+sub interval {
+    my ($span, $precision, $neg_direction, $pos_direction) = @_;
+
+    $precision = int($precision || 0) || 2;
+    _render(
+        _determine_direction($span, $neg_direction, $pos_direction),
+        Time::Duration::_approximate($precision, Time::Duration::_separate($span))
+    );
+}
+
+sub _determine_direction {
+    my ($span, $neg_direction, $pos_direction) = @_;
+
+    no warnings qw(numeric uninitialized);
+    my $direction = ($span <= -1) ? $neg_direction
+                  : ($span >=  1) ? $pos_direction
+                  : 'now';
+    use warnings;
+
+    return $direction;
+}
+
+my %units = (
+    second => 'sec',
+    minute => 'min',
+    hour   => 'hr',
+    day    => 'day',
+    year   => 'year',
+);
+
+sub _render {
+    my ($direction, @pieces) = @_;
+
+    my @wheel;
+    for my $piece (@pieces) {
+        next if $piece->[1] == 0;
+        push @wheel, sprintf("%d %s", $piece->[1], $units{$piece->[0]});
+    }
+
+    return "now" unless @wheel;
+    return sprintf($direction, join ' ', @wheel);
+}
 
 1;
 __END__
