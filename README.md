@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/moznion/Time-Duration-Concise.png?branch=master)](https://travis-ci.org/moznion/Time-Duration-Concise) [![Coverage Status](https://coveralls.io/repos/moznion/Time-Duration-Concise/badge.png?branch=master)](https://coveralls.io/r/moznion/Time-Duration-Concise?branch=master)
 # NAME
 
 Time::Duration::Concise - It's new $module

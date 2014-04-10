@@ -43,6 +43,8 @@
       },
       "runtime" : {
          "requires" : {
+            "Time::Duration" : "0",
+            "parent" : "0",
             "perl" : "5.008005"
          }
       },
@@ -53,5 +55,16 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/moznion/Time-Duration-Concise/issues"
+      },
+      "homepage" : "https://github.com/moznion/Time-Duration-Concise",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/moznion/Time-Duration-Concise.git",
+         "web" : "https://github.com/moznion/Time-Duration-Concise"
+      }
+   },
    "version" : "0.01"
 }
