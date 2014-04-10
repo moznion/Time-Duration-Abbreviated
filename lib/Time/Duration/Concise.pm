@@ -55,7 +55,7 @@ sub duration_exact {
 
 sub duration {
     (my $span = shift) || return '0 sec';
-    my $precision = int($_[1] || 0) || 2;  # precision (default: 2)
+    my $precision = int(shift || 0) || 2;  # precision (default: 2)
     _render(
         '%s',
         Time::Duration::_approximate($precision, Time::Duration::_separate(abs $span))
@@ -98,7 +98,7 @@ my %units = (
     minute => 'min',
     hour   => 'hr',
     day    => 'day',
-    year   => 'year',
+    year   => 'yr',
 );
 
 sub _render {
@@ -107,7 +107,14 @@ sub _render {
     my @wheel;
     for my $piece (@pieces) {
         next if $piece->[1] == 0;
-        push @wheel, sprintf("%d %s", $piece->[1], $units{$piece->[0]});
+
+        my $val  = $piece->[1];
+        my $unit = $units{$piece->[0]};
+        if ($unit =~ /\A(?:hr|day|yr)\Z/) {
+            $unit .= 's' if $val > 1;
+        }
+
+        push @wheel, "$val $unit";
     }
 
     return "now" unless @wheel;
