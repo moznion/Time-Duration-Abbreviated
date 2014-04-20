@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Time::Duration::Concise;
+use Time::Duration::Abbreviated;
 
 use Test::More;
 

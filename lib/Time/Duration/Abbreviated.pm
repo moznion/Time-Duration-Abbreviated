@@ -1,4 +1,4 @@
-package Time::Duration::Concise;
+package Time::Duration::Abbreviated;
 use 5.008005;
 use strict;
 use warnings;
