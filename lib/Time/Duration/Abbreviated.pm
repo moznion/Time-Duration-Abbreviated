@@ -128,15 +128,27 @@ __END__
 
 =head1 NAME
 
-Time::Duration::Concise - It's new $module
+Time::Duration::Abbreviated - Describe time duration in abbreviated English
 
 =head1 SYNOPSIS
 
-    use Time::Duration::Concise;
+    use Time::Duration::Abbreviated;
+
+    print duration(12345, 2); # 3 hrs 26 min
+    print earlier(12345, 2);  # 3 hrs 26 min ago
+    print later(12345, 2);    # 3 hrs 26 min later
+
+    print duration_exact(12345); # 3 hrs 25 min 45 sec
+    print earlier_exact(12345);  # 3 hrs 25 min 45 sec ago
+    print later_exact(12345);    # 3 hrs 25 min 45 sec later
 
 =head1 DESCRIPTION
 
-Time::Duration::Concise is ...
+Time::Duration::Abbreviated is a abbreviated version of L<Time::Duration>.
+
+=head1 SEE ALSO
+
+L<Time::Duration>
 
 =head1 LICENSE
 
