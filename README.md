@@ -7,13 +7,13 @@ Time::Duration::Abbreviated - Describe time duration in abbreviated English
 
     use Time::Duration::Abbreviated;
 
-    print duration(12345, 2); # 3 hrs 26 min
-    print earlier(12345, 2);  # 3 hrs 26 min ago
-    print later(12345, 2);    # 3 hrs 26 min later
+    duration(12345, 2); # => "3 hrs 26 min"
+    earlier(12345, 2);  # => "3 hrs 26 min ago"
+    later(12345, 2);    # => "3 hrs 26 min later"
 
-    print duration_exact(12345); # 3 hrs 25 min 45 sec
-    print earlier_exact(12345);  # 3 hrs 25 min 45 sec ago
-    print later_exact(12345);    # 3 hrs 25 min 45 sec later
+    duration_exact(12345); # => "3 hrs 25 min 45 sec"
+    earlier_exact(12345);  # => "3 hrs 25 min 45 sec ago"
+    later_exact(12345);    # => "3 hrs 25 min 45 sec later"
 
 # DESCRIPTION
 
