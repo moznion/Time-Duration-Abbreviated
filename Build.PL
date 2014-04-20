@@ -23,8 +23,8 @@ my %args = (
         'Module::Build' => 0.38,
     },
 
-    name            => 'Time-Duration-Concise',
-    module_name     => 'Time::Duration::Concise',
+    name            => 'Time-Duration-Abbreviated',
+    module_name     => 'Time::Duration::Abbreviated',
     allow_pureperl => 0,
 
     script_files => [glob('script/*'), glob('bin/*')],

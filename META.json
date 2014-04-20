@@ -1,5 +1,5 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "Describe time duration in abbreviated English",
    "author" : [
       "moznion <moznion@gmail.com>"
    ],
@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "Time-Duration-Concise",
+   "name" : "Time-Duration-Abbreviated",
    "no_index" : {
       "directory" : [
          "t",
@@ -57,13 +57,13 @@
    "release_status" : "unstable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/moznion/Time-Duration-Concise/issues"
+         "web" : "https://github.com/moznion/Time-Duration-Abbreviated/issues"
       },
-      "homepage" : "https://github.com/moznion/Time-Duration-Concise",
+      "homepage" : "https://github.com/moznion/Time-Duration-Abbreviated",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/moznion/Time-Duration-Concise.git",
-         "web" : "https://github.com/moznion/Time-Duration-Concise"
+         "url" : "git://github.com/moznion/Time-Duration-Abbreviated.git",
+         "web" : "https://github.com/moznion/Time-Duration-Abbreviated"
       }
    },
    "version" : "0.01"
