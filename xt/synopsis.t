@@ -8,7 +8,7 @@ eval {
 };
 plan skip_all => "Test::Synopsis::Expectation is not installed." if $@;
 
-all_synopsis_ok();
+Test::Synopsis::Expectation::all_synopsis_ok();
 
 done_testing;
 
